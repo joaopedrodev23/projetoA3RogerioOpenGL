@@ -1,0 +1,58 @@
+Dependências necessárias
+=======================
+
+Requisitos de sistema
+---------------------
+- Python 3.9 ou superior.
+- OpenGL compatível com drivers atualizados (GPU ou drivers de software que forneçam suporte a GL 3.x+).
+- Tkinter instalado junto com o Python (usado pelos diálogos de arquivo do visualizador FBX).
+- Em distribuições Linux, certifique-se de ter as bibliotecas de janelas necessárias para o GLFW (por exemplo: `libgl1`, `libglu1-mesa`, `xorg-dev`, `libglfw3`).
+
+Pacotes Python
+--------------
+Instale os pacotes via pip (recomendado dentro de um ambiente virtual):
+- `glfw`
+- `PyGLM` (módulo `glm`)
+- `PyOpenGL` e `PyOpenGL-accelerate`
+- `Pillow` (módulo `PIL`)
+- `numpy`
+- `noise` (para geração procedural de terreno)
+- `fbx` (SDK Python da Autodesk para leitura de arquivos .fbx)
+
+Instalação rápida
+-----------------
+1. Crie e ative um ambiente virtual (opcional, mas recomendado):
+   - Linux/macOS: `python -m venv .venv && source .venv/bin/activate`
+   - Windows (PowerShell): `python -m venv .venv; .venv\\Scripts\\Activate.ps1`
+2. Instale as dependências Python:
+   ```bash
+   pip install glfw PyGLM PyOpenGL PyOpenGL-accelerate Pillow numpy noise fbx
+   ```
+
+Estrutura de arquivos importante
+--------------------------------
+- Scripts principais em `projeto_A3_Caio/` (nomeados como `01 - texture_cube_shader.py`, `02 - image_terrain_shader.py`, etc.).
+- Recursos auxiliares:
+  - Shaders GLSL: arquivos `*_vs.glsl` e `*_fs.glsl` no mesmo diretório.
+  - Texturas em `projeto_A3_Caio/Textures/`.
+  - Modelos OBJ em `projeto_A3_Caio/OBJ models/`.
+  - Modelos FBX em `projeto_A3_Caio/FBX models/` (usados pelo visualizador FBX).
+  - Heightmaps em `projeto_A3_Caio/Heightmaps/`.
+
+Como executar os exemplos
+-------------------------
+1. Entre na pasta do projeto: `cd projeto_A3_Caio`.
+2. Execute o script desejado com Python, por exemplo:
+   - Cubo texturizado: `python "01 - texture_cube_shader.py"`
+   - Terreno a partir de heightmap: `python "02 - image_terrain_shader.py"`
+   - Terreno procedural: `python "03 - procedural_terrain_shader.py"`
+   - Terreno procedural com gatos: `python "03 - procedural_terrain_shader_with_cats.py"`
+   - Visualizador FBX com iluminação: `python "04 - fbx_viewer_light_shader.py"`
+3. Mantenha a estrutura de pastas intacta para que os shaders, texturas e modelos sejam encontrados pelos scripts.
+4. Para o visualizador FBX, use o diálogo de arquivo para escolher um modelo em `FBX models/` ou outro caminho acessível.
+
+Dicas adicionais
+----------------
+- Execute os scripts a partir do diretório `projeto_A3_Caio` para evitar problemas de caminhos relativos.
+- Caso use Linux em ambiente headless, certifique-se de ter suporte a criação de contexto OpenGL (por exemplo, via Xvfb ou outra solução de display virtual).
+- Se encontrar erros relacionados ao `fbx`, confirme a instalação do pacote Autodesk FBX SDK Python (`pip install fbx`).
